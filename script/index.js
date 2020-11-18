@@ -9,6 +9,20 @@ function hideActiveTab() {
   }
 }
 
+function tabOpeningByHash() {
+  hideActiveTab();
+  let hash = window.location.hash;
+  let hashNumber = window.location.hash.split("-")[2];
+
+  let tabIdInHash = tabContentIdPrefix + hashNumber;
+  let $content = document.getElementById(tabIdInHash);
+  $content.classList.add(activeClass);
+
+  let activeBtnId = tabBtnIdPrefix + hashNumber;
+  let $activeBtn = document.getElementById(activeBtnId);
+  $activeBtn.classList.add(activeClass);
+}
+
 function onTabClicked(event) {
   hideActiveTab();
 
@@ -21,6 +35,8 @@ function onTabClicked(event) {
 
   let $activeTab = document.getElementById(activeTabId);
   $activeTab.classList.add("active");
+
+  window.location.hash = activeTabId;
 }
 
 function onTabKeyPressed(event) {
@@ -53,6 +69,8 @@ function onTabKeyPressed(event) {
 
   event.preventDefault();
 }
+
+tabOpeningByHash();
 
 let $allTabButtons = document.querySelectorAll(".tab-button");
 
