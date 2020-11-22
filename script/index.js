@@ -11,13 +11,13 @@ function hideActiveTab() {
 
 function tabOpeningByHash() {
   hideActiveTab();
-  let hash = window.location.hash;
-  let hashNumber = window.location.hash.split("-")[2];
+  let hash = window.location.hash || 'tab-content-1';
+  let hashNumber = hash.split("-")[2];
 
   let tabIdInHash = tabContentIdPrefix + hashNumber;
   let $content = document.getElementById(tabIdInHash);
   $content.classList.add(activeClass);
-
+  
   let activeBtnId = tabBtnIdPrefix + hashNumber;
   let $activeBtn = document.getElementById(activeBtnId);
   $activeBtn.classList.add(activeClass);
