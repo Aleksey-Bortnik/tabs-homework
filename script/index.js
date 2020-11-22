@@ -11,7 +11,7 @@ function hideActiveTab() {
 
 function tabOpeningByHash() {
   hideActiveTab();
-  let hash = window.location.hash || 'tab-content-1';
+  let hash = window.location.hash || tabContentIdPrefix + 1;
   let hashNumber = hash.split("-")[2];
 
   let tabIdInHash = tabContentIdPrefix + hashNumber;
